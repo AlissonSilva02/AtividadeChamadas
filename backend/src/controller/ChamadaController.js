@@ -5,16 +5,27 @@ const endpoints = Router()
 
 endpoints.get('/consultar/chamadas', async (req, resp) => {
     try {
-        let chamadas = await db.consultarChamadas()
+        let resposta = await db.consultarChamadas()
 
-        resp.send(chamadas)
+        resp.send(resposta)
     } catch (err) {
         resp.send({
             Error: err.message
         })
     }
-
 })
 
+endpoints.post('/adicionar/chamada', async (req, resp) => {
+    try{
+        let chamada = req.body
+        let resposta = await db.criarChamada(chamada)
+        
+        resp.send(resposta)
+    }catch(err){
+        resp.send({
+            Error: err.message 
+        })
+    }
+})
 
 export default endpoints;
