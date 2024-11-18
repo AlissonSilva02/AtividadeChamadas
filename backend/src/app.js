@@ -10,4 +10,4 @@ servidor.use(cors());
 adicionarRotas(servidor);
 
 const PORTA=process.env.PORTA;
-servidor.listen(PORTA, () => console.log(`--> Api subiu na porta 3131`));
+servidor.listen(PORTA, () => console.log(`--> Api subiu na porta ${PORTA}`));
