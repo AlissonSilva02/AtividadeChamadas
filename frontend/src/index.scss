@@ -1,0 +1,24 @@
+/*@font-face {
+    font-family: Inter;
+    src: url('../public/assets/fonts/Inter-VariableFont_opsz\,wght.ttf');
+}*/
+
+
+*{
+    margin: 0px;
+    box-sizing: border-box;
+
+}
+
+header{
+    display: flex;
+    align-items: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+summary {
+    cursor: pointer;
+}
