@@ -1,11 +1,8 @@
-import ChamadaControllerController from './controller/ChamadaController.js'
-import usuarioController from './controller/UsuarioController.js'
+import ChamadaController from './controller/ChamadaController.js'
 
 
 
 export default function adicionarRotas (servidor) {
-    servidor.use(chamadaController);
-    servidor.use(usuarioController);
-
+     servidor.use(ChamadaController);
 }
 
