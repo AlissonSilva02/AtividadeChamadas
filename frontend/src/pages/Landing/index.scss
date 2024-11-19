@@ -1,32 +1,63 @@
 .landing {
-    background-color: #E7ECEF;
+  background-color: #e7ecef;
+  display: flex;
+  flex-direction: column;
+
+  .pesquisar {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10%;
+    padding-top: 10%;
+    padding-bottom: 3%;
+
+    .lupa {
+      display: flex;
+      border: 2px solid black;
+      border-radius: 10px;
+      background-color: #ffffff;
+      input {
+        border: none;
+        background: none;
+        width: 100%;
+      }
+
+      button {
+        img {
+          border: none;
+          background: none;
+        }
+      }
+    }
+  }
+
+  .tabela {
     display: flex;
     flex-direction: column;
+    padding-left: 7%;
+    padding-right: 7%;
 
-    .pesquisar {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 10%;
-        padding-top: 10%;
-        padding-bottom: 3%;
-
-
-        .lupa {
-            display: flex;
-            border: 2px solid black;
-            border-radius: 10px;
-            background-color: #ffffff;
-            input {
-                border: none;
-                background: none;
-                width: 100%;
-            }
-
-            button{
-            img{
-                border: none;
-                background: none;
-            }}
-        }
+    .titulos {
+      display: flex;
+      justify-content: space-between;
+      padding: 1%;
+      background-color: black;
+      color: #ffffff;
+      
     }
+  }
+
+  .cadastrar {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+    padding: 1%;
+    background-color: #db2b39;
+    color: #ffffff;
+    border-radius: 15px;
+    
+
+    h1{
+        font-size: 0.9rem;
+    }
+  }
 }

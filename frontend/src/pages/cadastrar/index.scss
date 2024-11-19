@@ -1,0 +1,29 @@
+.pagina-cadastrar{
+    display: flex;
+    flex-direction: column;
+    background:#E7ECEF;
+
+    .formulario{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        margin: 20%;
+        background-color: #ffffff;
+        gap: 10px;
+        border-radius: 10px;
+        .titulo{
+            color:#DB2B39;
+            padding: 2%;
+        }
+
+        .informacoes{
+            display: flex;
+            flex-direction: column;
+            padding: 2%;
+            .opcoes{
+                display: flex;
+            }
+        }
+        
+    }
+}
