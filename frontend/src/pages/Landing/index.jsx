@@ -7,7 +7,7 @@ import Cabecalho from "../../components/cabecalho";
 export default function App() {
   const [filtro, setFiltro] = useState();
 
-  function filtros() {}
+  function filtros() { }
 
   return (
     <div className="landing">
@@ -20,9 +20,10 @@ export default function App() {
             placeholder="Filtrar..."
             onChange={(e) => setFiltro(e.target.value)}
           />
+          <hr />
           <button onClick={filtros}>
             {" "}
-            <img src="/assets/images/lupa.png" alt="" />
+            <img className="imag" src="/assets/images/lupa.png" alt="" />
           </button>
         </div>
       </div>
@@ -30,20 +31,25 @@ export default function App() {
       <div className="tabela">
         <div className="titulos">
           <h1>Título</h1>
+          <hr />
           <h1>Impacto</h1>
+          <hr />
           <h1>Data Ocorrência</h1>
+          <hr />
           <h1>Atribuído</h1>
         </div>
 
         {/*fazer o .map para retornar os resultados*/}
       </div>
 
-      <Link to={"/cadastrar"}>
+      <div className="botao">
         <div className="cadastrar">
-          <h1>Novo chamado</h1>
+          <Link to={"/cadastrar"}>
+            <h1>Novo chamado</h1>
+          </Link>
         </div>
-      </Link>
-      
+      </div>
+
     </div>
   );
 }

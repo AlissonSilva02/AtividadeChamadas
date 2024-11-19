@@ -6,51 +6,62 @@ import Cabecalho from "../../components/cabecalho";
 
 export default function Cadastrar() {
 
-    function cadastrar(){
+    function cadastrar() {
 
     }
-  return (
-    <div className="pagina-cadastrar">
-      <Cabecalho />
+    return (
+        <div className="pagina-cadastrar">
+            <Cabecalho />
 
-      <img src="/assets/images/negocios.png" alt="" />
+            <img src="/assets/images/negocios.png" alt="" />
 
-      <div className="formulario">
-        <h1 className="titulo">Detalhes do Chamado</h1>
+            <div className="formulario">
+                <h1 className="titulo">Detalhes do Chamado</h1>
 
-        <div className="informacoes">
-          <h2>Título</h2>
-          <input type="text" placeholder="Informe um título..." />
+                <div className="informacoes">
+                    <h2>Título</h2>
+                    <input type="text" placeholder="Informe um título..." />
 
-          <h2>Informações</h2>
-          <input type="text" placeholder="### Insira as informações aqui..." />
+                    <h2>Informações</h2>
+                    <input className="infor" type="text" placeholder="### Insira as informações aqui..." />
 
-          <div className="opcoes">
-            <h2>Impacto</h2>
-            <input type="text" />
+                    <div className="opcoes">
+                        <div className="abucuxi">
+                            <h2>Impacto</h2>
+                            <input type="text" placeholder="Baixo | Medio | Alto" />
+                        </div>
 
-            <h2>Data da Ocorrência</h2>
-            <input type="date" placeholder="01/01/2024" />
+                        <div className="abucuxi">
+                            <h2>Data da Ocorrência</h2>
+                            <input type="date" placeholder="01/01/2024" />
+                        </div>
 
-            <h2>Atribuir</h2>
-            <input type="" placeholder="Selecione o usuário responsável..." />
-          </div>
-        </div>
+                        <div className="abucuxi">
+                            <h2>Atribuir</h2>
+                            <input type="text" placeholder="Selecione o usuário responsável..." />
+                        </div>
 
-        <Link to={-1}>
-          <div className="voltar">
-            <p>Voltar</p>
-          </div>
-        </Link>
+                    </div>
+                </div>
 
-        <Link to={"/"}>
-                <div className="salvar">
 
-                    <button onClick={cadastrar}>Salvar</button>
+                <div className="botoes">
+
+                    <div className="voltar">
+                        <Link to={-1}>
+                            <button>Voltar</button>
+                        </Link>
+                    </div>
+
+
+
+                    <div className="salvar">
+                            <button onClick={cadastrar}>Salvar</button>
+                    </div>
 
                 </div>
-            </Link>
-      </div>
-    </div>
-  );
+
+            </div>
+        </div>
+    );
 }
