@@ -2,10 +2,12 @@ import 'dotenv/config.js';
 import express from 'express';
 import cors from 'cors';
 
-import adicionarRotas from './rotas.js';
-
 const servidor = express();
+
+servidor.use(express.json());
 servidor.use(cors());
+
+import adicionarRotas from './rotas.js';
 
 adicionarRotas(servidor);
 

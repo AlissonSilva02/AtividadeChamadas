@@ -3,7 +3,7 @@ import { Router } from 'express'
 
 const endpoints = Router()
 
-endpoints.get('/consultar/chamadas', async (req, resp) => {
+endpoints.get('/chamadas/consultar', async (req, resp) => {
     try {
         let resposta = await db.consultarChamadas()
 
@@ -15,15 +15,51 @@ endpoints.get('/consultar/chamadas', async (req, resp) => {
     }
 })
 
-endpoints.post('/adicionar/chamada', async (req, resp) => {
+endpoints.post('/chamada/criar', async (req, resp) => {
     try{
-        let chamada = req.body
+        let chamada = req.body        
+
         let resposta = await db.criarChamada(chamada)
         
-        resp.send(resposta)
+        resp.send({
+                LinhasAfetadas: resposta
+            })
     }catch(err){
         resp.send({
             Error: err.message 
+        })
+    }
+})
+
+endpoints.put('/chamada/alterar/:id', async (req, resp) => {
+    try{
+        let id = req.params.id
+        let chamada = req.body        
+
+        let resposta = await db.alterarChamada(chamada, id)
+        
+        resp.send({
+                LinhasAfetadas: resposta
+            })
+    }catch(err){
+        resp.send({
+            Error: err.message 
+        })
+    }
+})
+
+endpoints.delete('/chamada/remover/:id', async (req, resp) => {
+    try{
+        let id = req.params.id
+        let resposta = await db.removerChamada(id)
+
+        resp.send({
+            LinhasAfetadas: resposta
+        })
+        
+    }catch(err){
+        resp.send({
+            Error: err.message
         })
     }
 })

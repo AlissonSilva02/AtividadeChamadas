@@ -21,20 +21,48 @@ export async function consultarChamadas() {
 
 export async function criarChamada(chamada) {
     let comando = ` 
-    select 
-        id_chamada,
-        titulo, 
-        informacoes, 
-        impacto, 
-        data_ocorrencia, 
-        atribuido
-    from tb_chamada;
+    insert into tb_chamada (titulo, informacoes, impacto, data_ocorrencia, atribuido, id_usuario) 
+    values(?, ?, ?, ?, ?, ?);
     `
 
-    let resposta = await con.query(comando, [chamada.titulo, chamada.info, chamada.impacto, chamada.data, chamada.atribuir]);
+    let resposta = await con.query(comando, [chamada.titulo, chamada.info, chamada.impacto, chamada.data, chamada.atribuir, chamada.usuario]);
 
     let registros = resposta[0]
     let info = registros.affectedRows
 
+    return info
+}
+
+export async function alterarChamada(chamada, id) {
+    let comando = ` 
+        update tb_chamada 
+        set
+            titulo = ?,
+            informacoes = ?,
+            impacto = ?,
+            data_ocorrencia = ?,
+            atribuido = ?,
+            id_usuario = ?
+        where id_chamada = ?;
+    `
+
+    let resposta = await con.query(comando, [chamada.titulo, chamada.info, chamada.impacto, chamada.data, chamada.atribuir, chamada.usuario, id]);
+
+    let registros = resposta[0]
+    let info = registros.affectedRows
+
+    return info
+}
+
+export async function removerChamada(id) {
+    let comando = `
+    delete from tb_chamada
+    where id_chamada = ?;
+    `
+    let resposta = await con.query(comando, [id]);
+
+    let registros = resposta[0]
+    let info = registros.affectedRows
+    
     return info
 }
