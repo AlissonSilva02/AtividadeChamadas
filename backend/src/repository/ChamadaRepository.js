@@ -1,6 +1,6 @@
 import con from './connection.js'
 
-export async function consultarChamadas() {
+export async function consultarChamadas(id) {
     let comando = ` 
     select 
         id_chamada,
@@ -9,11 +9,11 @@ export async function consultarChamadas() {
         impacto, 
         data_ocorrencia, 
         atribuido
-    from tb_chamada;
+    from tb_chamada
+    where id_usuario = ?
     `
 
-    let resposta = await con.query(comando, []);
-
+    let resposta = await con.query(comando, [id]);
     let registros = resposta[0]
 
     return registros

@@ -3,9 +3,10 @@ import { Router } from 'express'
 
 const endpoints = Router()
 
-endpoints.get('/chamadas/consultar', async (req, resp) => {
+endpoints.get('/chamadas/consultar/:id', async (req, resp) => {
     try {
-        let resposta = await db.consultarChamadas()
+        let id = req.params.id
+        let resposta = await db.consultarChamadas(id)
 
         resp.send(resposta)
     } catch (err) {
