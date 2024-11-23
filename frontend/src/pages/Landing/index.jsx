@@ -5,10 +5,15 @@ import axios from "axios";
 import Cabecalho from "../../components/cabecalho";
 
 export default function App() {
-    const [filtro, setFiltro] = useState();
-	const [registros, setRegistros] = useState([]);
+    const [registros, setRegistros] = useState([]);
 
-    function filtros() {}
+    const [filtro, setFiltro] = useState('');
+
+    const filtrar = 
+        filtro.length > 0 
+            ? registros.filter((produto) => 
+                produto.titulo.toLowerCase().includes(filtro))
+            : [];
 
 	const host = 'localhost:3007'
 	const id = 1 //O usuario de id 1 esta logado
@@ -19,12 +24,25 @@ export default function App() {
 			let resp = await axios.get(url)
 
             const itens = Array.isArray(resp.data) ? resp.data : [];
-
+            
 			setRegistros(itens);
         },
         []
     );
 
+    async function deletar(id) {
+        let url = `http://${host}/chamada/remover/${id}`
+        await axios.delete(url)
+
+        await buscar()
+    }
+
+    function formatarData(data) {
+        
+        const dataFormatada = new Date(data).toLocaleDateString('pt-BR')
+
+        return dataFormatada;
+    }
 
 	useEffect(() => {
 		buscar()
@@ -42,11 +60,10 @@ export default function App() {
                         onChange={(e) => setFiltro(e.target.value)}
                     />
                     <hr />
-                    <button onClick={filtros}>
+                    <button>
                         <img
-                            className="imag"
-                            src="/assets/images/lupa.png"
-                            alt=""
+                            src="/assets/images/lupa.svg"
+                            alt="lupa"
                         />
                     </button>
                 </div>
@@ -63,14 +80,39 @@ export default function App() {
 						</tr>
 					</thead>
 					<tbody>
-						{registros.map((item, index) => (
-							<tr key={index}>
-								<td>{item.titulo}</td>
-								<td className="centralizar">{item.impacto}</td>
-								<td className="centralizar">{item.data_ocorrencia}</td>
-								<td>{item.atribuido}</td>
-							</tr>
-						))}
+						{ filtro.length > 0 ? (
+                            filtrar.map((item) => (
+                                
+                                <tr key={item.id_chamada}>
+                                    <td>{item.titulo}</td>
+                                    <td className="centralizar">{item.impacto}</td>
+                                    <td className="centralizar">{item.data_ocorrencia}</td>
+                                    <td className="alinhar">{item.atribuido} 
+                                        <div>
+                                            <img src="/assets/images/Editar.svg" alt="editar" /> 
+                                            <img src="/assets/images/Remover.svg" alt="excluir" onClick={() => deletar(item.id_chamada)} /> 
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        ):
+
+                          (
+                            registros.map((item) => (
+                                <tr key={item.id_chamada}>
+                                    <td>{item.titulo}</td>
+                                    <td className="centralizar">{item.impacto}</td>
+                                    <td className="centralizar">{formatarData(item.data_ocorrencia)}</td>
+                                    <td className="alinhar">{item.atribuido} 
+                                        <div>
+                                            <img src="/assets/images/Editar.svg" alt="editar" /> 
+                                            <img src="/assets/images/Remover.svg" alt="excluir" onClick={() => deletar(item.id_chamada)} /> 
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                        
 					</tbody>
 					
 				</table>
@@ -84,5 +126,5 @@ export default function App() {
                 </div>
             </div>
         </div>
-    );
+    )
 }

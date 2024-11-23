@@ -21,12 +21,16 @@
 
             input {
                 border: none;
+                outline: none;
                 background: none;
                 width: 100%;
             }
 
             button {
-                .imag {
+                background: none;
+                border: none;
+
+                img {
                     border: none;
                     background-color: none;
                 }
@@ -42,6 +46,12 @@
         table {
             width: 100%;
             border-collapse: collapse;
+
+            .alinhar{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
 
             .centralizar {
                 text-align: center;
@@ -62,9 +72,14 @@
                 background-color: #ffffff;
 
                 tr {
+                    border-bottom: #747474 solid 1px;
+                    font-size: 0.75rem;
                     td {
                         padding: 0.5em 2em;
-                        border-bottom: #747474 solid 1px;
+
+                        img{
+                            cursor: pointer;
+                        }
                     }
                 }
             }
