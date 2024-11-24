@@ -88,6 +88,7 @@
 
     .botao {
         margin-left: 80%;
+        
         .cadastrar {
             display: flex;
             justify-content: center;
@@ -99,6 +100,10 @@
             margin-top: 15px;
             h1 {
                 font-size: 0.9rem;
+            }
+            a {
+                text-decoration: none;
+                color: inherit; /* Mantém a cor do texto conforme a classe */
             }
         }
     }

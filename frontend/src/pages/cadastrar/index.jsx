@@ -39,6 +39,7 @@ export default function Cadastrar() {
             //editando
             let url = `${host}/chamada/alterar/${id}`
             let resp = await axios.put(url, paramCorpo)
+            navigate(-1)
         }
     }
     
