@@ -6,8 +6,8 @@ import Cabecalho from "../../components/cabecalho";
 
 export default function App() {
     const [registros, setRegistros] = useState([]);
-
     const [filtro, setFiltro] = useState('');
+
 
     const filtrar = 
         filtro.length > 0 
@@ -86,7 +86,7 @@ export default function App() {
                                 <tr key={item.id_chamada}>
                                     <td>{item.titulo}</td>
                                     <td className="centralizar">{item.impacto}</td>
-                                    <td className="centralizar">{item.data_ocorrencia}</td>
+                                    <td className="centralizar">{formatarData(item.data_ocorrencia)}</td>
                                     <td className="alinhar">{item.atribuido} 
                                         <div>
                                             <img src="/assets/images/Editar.svg" alt="editar" /> 
@@ -96,7 +96,6 @@ export default function App() {
                                 </tr>
                             ))
                         ):
-
                           (
                             registros.map((item) => (
                                 <tr key={item.id_chamada}>
@@ -105,7 +104,9 @@ export default function App() {
                                     <td className="centralizar">{formatarData(item.data_ocorrencia)}</td>
                                     <td className="alinhar">{item.atribuido} 
                                         <div>
-                                            <img src="/assets/images/Editar.svg" alt="editar" /> 
+                                            <Link to={`/cadastrar/${item.id_chamada}`}>
+                                                <img src="/assets/images/Editar.svg" alt="editar" /> 
+                                            </Link>
                                             <img src="/assets/images/Remover.svg" alt="excluir" onClick={() => deletar(item.id_chamada)} /> 
                                         </div>
                                     </td>

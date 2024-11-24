@@ -10,6 +10,7 @@ export default function Navegacao() {
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/cadastrar" element={<Cadastrar />} />
+                <Route path="/cadastrar/:id" element={<Cadastrar />} />
                 
             </Routes>
         </BrowserRouter>

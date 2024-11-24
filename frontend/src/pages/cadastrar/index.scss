@@ -49,8 +49,23 @@
                     font-size: 10px;
                     padding-right: 40px;
 
-                    input {
+                    input{
                         padding: 3.5%;
+                    }
+
+                    select{
+                        
+                        border: solid 2px #050505;
+                        border-radius: 8px;
+                        padding: 0.5em 2em;
+                    }
+
+                    select:focus {
+                        outline: none;
+                    }
+
+                    select:hover {
+                        outline: none; 
                     }
 
                     h2 {
